@@ -1,16 +1,13 @@
 <?php
 
-// check if the componets are set
-if(!(isset($_GET['model']) || isset($_GET['view']) || isset($_GET['controller']) || isset($_GET['action']))){
-    echo 'Please provide valid MVC components. 1';
-    die;
-}
+// explode url
+$components = explode("/", $_GET['url']);
 
 // get MVC components
-$model = $_GET['model'];
-$view = $_GET['view'];
-$controller = $_GET['controller'];
-$action = $_GET['action'];
+$model = $components[0];
+$view = $components[1];
+$controller = $components[2];
+$action = $components[3];
 
 // check if the provided components are valid
 if(!(empty($model) || empty($view) || empty($controller) || empty($action))){
